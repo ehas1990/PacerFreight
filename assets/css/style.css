@@ -138,9 +138,9 @@ img {
 
 .bg-1 {
     background-image:
-        linear-gradient(172deg,
-            rgba(241, 219, 16, 0.98) 0%,
-            rgba(5, 9, 12, 0.75) 35%,
+        linear-gradient(90deg,
+            rgba(11, 12, 5, 0.98) 0%,
+            rgba(5, 9, 12, 0.85) 35%,
             rgba(5, 9, 12, 0.35) 70%,
             rgba(5, 9, 12, 0.1) 100%),
         url("../images/banner1.jpg");
@@ -151,7 +151,13 @@ img {
 /* SCENE 02 */
 
 .bg-2 {
-    background-image: linear-gradient(172deg, rgba(241, 219, 16, 0.98) 0%, rgba(5, 9, 12, 0.75) 40%, rgba(5, 9, 12, 0.2) 100%), url(../images/banner2.jpg);
+    background-image:
+        linear-gradient(90deg,
+            rgba(5, 9, 12, 0.98) 0%,
+            rgba(5, 9, 12, 0.75) 40%,
+            rgba(5, 9, 12, 0.2) 100%),
+        url("../images/banner2.jpg");
+
     opacity: 0;
     transform: scale(1.15);
 }
@@ -160,8 +166,8 @@ img {
 
 .bg-3 {
     background-image:
-        linear-gradient(172deg,
-            rgba(241, 219, 16, 0.98) 0%,
+        linear-gradient(90deg,
+            rgba(5, 9, 12, 0.98) 0%,
             rgba(5, 9, 12, 0.72) 40%,
             rgba(5, 9, 12, 0.2) 100%),
         url("../images/banner3.jpg");
@@ -181,7 +187,7 @@ img {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(180deg, rgba(241, 219, 16, 0.68), transparent 30%, rgba(5, 9, 12, .72)),
+        linear-gradient(180deg, rgba(5, 9, 12, .65), transparent 30%, rgba(5, 9, 12, .72)),
         radial-gradient(circle at 70% 55%, transparent 0%, rgba(0, 0, 0, .3) 60%);
     z-index: -3;
 }
@@ -256,6 +262,7 @@ img {
 
 .brand img {
     width: 154px;
+    border-radius: 12px;
 }
 
 .brand-mark {
@@ -3890,8 +3897,9 @@ body.menu-open {
     width: 100%;
     overflow: hidden;
     padding: 110px 0 30px;
-    background: radial-gradient(circle at 15% 20%, rgba(246, 192, 25, 0.08), transparent 28%), linear-gradient(303deg, #000000 0%, #efefef 100%);
-    background-image: url('../images/core-values.jpg');
+    background-image:
+        linear-gradient(135deg, rgba(5, 9, 12, 0.85) 30%, rgba(0, 0, 0, 0.952) 100%),
+        url('../images/dsada.jpg');
     background-position: center;
     background-size: cover;
 }
@@ -4007,7 +4015,7 @@ body.menu-open {
 }
 
 .cp-title-dark {
-    color: #142334;
+    color: var(--white);
 }
 
 
