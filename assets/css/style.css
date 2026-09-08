@@ -59,7 +59,7 @@ img {
 .site-loader {
     position: fixed;
     inset: 0;
-    background: var(--black);
+    background: var(--yellow);
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -1844,7 +1844,7 @@ img {
     }
 
     .hero-title {
-        font-size: clamp(4.3rem, 19vw, 7rem);
+        font-size: clamp(4.3rem, 19vw, 6rem);
         line-height: .8;
     }
 
@@ -1984,7 +1984,7 @@ img {
     }
 
     .hero-title {
-        font-size: 4.1rem;
+        font-size: 3.49rem;
     }
 
     .hero-description {
@@ -3526,7 +3526,7 @@ img {
     }
 
     .footer-logo img {
-        width: 220px;
+        width: 120px;
     }
 
     .footer-tagline {
@@ -4434,7 +4434,7 @@ body.menu-open {
     /* Title */
 
     .cp-title {
-        font-size: clamp(65px, 18vw, 110px);
+        font-size: clamp(25px, 18vw, 40px);
 
         line-height: 0.87;
     }
@@ -4529,7 +4529,7 @@ body.menu-open {
     }
 
     .cp-title {
-        font-size: clamp(56px, 18vw, 82px);
+        font-size: 20px;
     }
 
     .cp-description {
