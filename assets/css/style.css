@@ -3897,11 +3897,10 @@ body.menu-open {
     width: 100%;
     overflow: hidden;
     padding: 110px 0 30px;
-    background-image:
-        linear-gradient(135deg, rgba(5, 9, 12, 0.85) 30%, rgba(0, 0, 0, 0.952) 100%),
-        url('../images/dsada.jpg');
-    background-position: center;
+    background-image: linear-gradient(360deg, rgba(5, 9, 12, 0.85) 30%, rgb(0 0 0 / 5%) 100%), url(../images/dsada.jpg);
+    background-position: center 20%;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* .company-profile-section {
