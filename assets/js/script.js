@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (loader) {
 
     // Start logo from left
-    gsap.set(".loader-logo", { x: -140, y: 0 });
+    gsap.set(".loader-logo", { x: -40, y: 0 });
 
     // Gentle natural wave floating motion (up/down and subtle micro-tilt)
     const floatAnim = gsap.to(".loader-logo", {
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Smooth horizontal travel from LEFT to RIGHT (3.2 seconds)
     intro
       .to(".loader-logo", {
-        x: 140,
+        x: 40,
         duration: 3.2,
         ease: "sine.inOut"
       })

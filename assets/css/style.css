@@ -2807,12 +2807,12 @@ img {
 
     .yellow-shape {
         left: -61px;
-        height: 400px;
+
     }
 
     .red-shape {
-        left: 20px;
-        height: 350px;
+        left: 0px;
+
     }
 
 
@@ -3264,12 +3264,40 @@ img {
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(245, 181, 27, 0.75);
+    border: 1px solid var(--red);
+
+    border-radius: 50%;
+
+    color: var(--red);
+}
+
+.contact-item:hover .contact-icon {
+    flex: 0 0 34px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--yellow);
 
     border-radius: 50%;
 
     color: var(--yellow);
 }
+
+.contact-item:hover .contact-info a {
+    color: var(--yellow);
+    transform: scaleX(-3px);
+}
+
+.contact-item:hover .contact-info a {
+    transition: transform 0.35s ease;
+}
+
 
 .contact-icon i {
     font-size: 18px;
@@ -3342,11 +3370,11 @@ img {
 
     padding: 0 22px;
 
-    border: 1px solid var(--yellow);
+    border: 1px solid var(--red);
 
     border-radius: 12px;
 
-    color: var(--yellow);
+    color: var(--red);
 
     text-decoration: none;
 
@@ -3373,7 +3401,7 @@ img {
 .footer-contact-btn:hover {
     background: var(--yellow);
     color: #07111d;
-
+    border-color: var(--yellow);
     transform: translateY(-3px);
 }
 
