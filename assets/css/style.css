@@ -3677,6 +3677,8 @@ a.dev-log img {
         flex-wrap: nowrap;
         white-space: nowrap;
         gap: 4px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     .dev-log img,
