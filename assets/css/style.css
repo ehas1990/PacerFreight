@@ -1843,7 +1843,7 @@ img {
 
     .hero-content {
         min-height: calc(100svh - 85px);
-        padding: 70px 0 210px;
+        padding: 120px 0 210px;
     }
 
     .hero-copy {
@@ -2787,7 +2787,7 @@ img {
     .services-plane {
         font-size: 45px;
 
-        top: 5px;
+        top: -20px;
         right: 8%;
     }
 
