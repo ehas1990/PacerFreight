@@ -3670,7 +3670,7 @@ a.dev-log img {
     }
 
     .footer-copyright p {
-        font-size: clamp(10px, 1.7vw, 12px);
+        font-size: clamp(10px, 1.7vw, 10px);
         line-height: 1.4;
         display: inline-flex;
         align-items: center;
