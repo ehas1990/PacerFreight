@@ -3666,24 +3666,38 @@ a.dev-log img {
     }
 
     .footer-copyright {
-        align-items: center;
+        width: 100%;
+        display: block;
+        text-align: center;
     }
 
     .footer-copyright p {
-        font-size: clamp(9px, 1.2vw, 9px);
-        line-height: 1.4;
-        display: inline-flex;
-        align-items: center;
-        flex-wrap: nowrap;
-        white-space: nowrap;
-        gap: 4px;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding: 0 15px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.6;
+        max-width: 100%;
+        box-sizing: border-box;
+        font-size: 13px;
+        display: block;
+        white-space: normal;
     }
 
+    .footer-copyright .dev-log,
+    .dev-log {
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+    }
+
+    .footer-copyright .dev-log img,
     .dev-log img,
     a.dev-log img {
-        height: clamp(13px, 3.1vw, 18px);
+        max-width: 85px;
+        width: auto;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
     }
 
 }
