@@ -3595,6 +3595,11 @@ img {
         height: 55px;
     }
 
+    .contact-item:hover .contact-icon {
+        width: 55px;
+        height: 55px;
+    }
+
     .contact-icon i {
         font-size: 24px;
     }
