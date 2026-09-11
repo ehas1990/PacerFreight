@@ -376,8 +376,20 @@ img {
     color: #18222c;
 }
 
+.quote-btn span,
+.quote-btn i {
+    color: inherit;
+    transition: color .4s ease;
+}
+
 .quote-btn:hover {
     background: var(--red);
+    color: var(--white) !important;
+}
+
+.quote-btn:hover span,
+.quote-btn:hover i {
+    color: var(--white) !important;
 }
 
 .mobile-menu-btn,
