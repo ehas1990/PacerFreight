@@ -188,19 +188,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (loader) {
 
+    // Start logo from left
+    gsap.set(".loader-logo", { x: -140, y: 0 });
+
+    // Gentle natural wave floating motion (up/down and subtle micro-tilt)
+    const floatAnim = gsap.to(".loader-logo", {
+      y: -12,
+      rotation: 1.5,
+      duration: 1.1,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    // Smooth horizontal travel from LEFT to RIGHT (3.2 seconds)
     intro
       .to(".loader-logo", {
-        opacity: 0,
-        scale: 1.1,
-        duration: 0.6,
-        delay: 0.4,
-        ease: "power2.out"
+        x: 140,
+        duration: 3.2,
+        ease: "sine.inOut"
       })
 
+      // Smooth fade out of entire loader background
       .to(loader, {
-        yPercent: -100,
-        duration: 1,
-        ease: "power4.inOut"
+        opacity: 0,
+        duration: 0.9,
+        ease: "power2.inOut",
+        onComplete: () => {
+          floatAnim.kill();
+          loader.style.display = "none";
+        }
       });
 
   }
@@ -822,7 +839,7 @@ document.addEventListener("DOMContentLoaded", () => {
       historyImage &&
 
 
-            historyImage &&
+      historyImage &&
       document.querySelector(".about-history__visual")
     ) {
 
@@ -1439,181 +1456,181 @@ window.addEventListener("load", () => {
 
 function initFooterAnimations() {
 
-    const footer = document.querySelector(".pacer-footer");
+  const footer = document.querySelector(".pacer-footer");
 
-    if (!footer) return;
+  if (!footer) return;
 
-    if (
-        typeof gsap === "undefined" ||
-        typeof ScrollTrigger === "undefined"
-    ) {
-        return;
+  if (
+    typeof gsap === "undefined" ||
+    typeof ScrollTrigger === "undefined"
+  ) {
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+
+  /* Prevent duplicate initialization */
+
+  if (footer.dataset.animationInit === "true") {
+    return;
+  }
+
+  footer.dataset.animationInit = "true";
+
+
+  /* -----------------------------------------
+     MAIN COLUMNS
+  ----------------------------------------- */
+
+  const revealItems =
+    footer.querySelectorAll(".footer-reveal");
+
+
+  if (revealItems.length) {
+
+    gsap.from(revealItems, {
+
+      y: 60,
+
+      opacity: 0,
+
+      duration: 1,
+
+      stagger: 0.16,
+
+      ease: "power3.out",
+
+      scrollTrigger: {
+        trigger: footer,
+        start: "top 80%",
+        once: true
+      }
+
+    });
+
+  }
+
+
+  /* -----------------------------------------
+     SOCIAL ICONS
+  ----------------------------------------- */
+
+  const socialIcons =
+    footer.querySelectorAll(".footer-social a");
+
+
+  if (socialIcons.length) {
+
+    gsap.from(socialIcons, {
+
+      scale: 0,
+
+      opacity: 0,
+
+      stagger: 0.1,
+
+      duration: 0.6,
+
+      ease: "back.out(1.8)",
+
+      scrollTrigger: {
+        trigger: ".footer-social",
+        start: "top 90%",
+        once: true
+      }
+
+    });
+
+  }
+
+
+  /* -----------------------------------------
+     CONTACT BUTTON
+  ----------------------------------------- */
+
+  const contactButton =
+    footer.querySelector(".footer-contact-btn");
+
+
+  if (contactButton) {
+
+    gsap.from(contactButton, {
+
+      y: 25,
+
+      opacity: 0,
+
+      duration: 0.8,
+
+      ease: "power3.out",
+
+      scrollTrigger: {
+        trigger: contactButton,
+        start: "top 95%",
+        once: true
+      }
+
+    });
+
+  }
+
+
+  /* -----------------------------------------
+     BOTTOM SECTION
+  ----------------------------------------- */
+
+  gsap.from(
+    ".footer-bottom__container",
+    {
+
+      y: 35,
+
+      opacity: 0,
+
+      duration: 0.8,
+
+      ease: "power3.out",
+
+      scrollTrigger: {
+        trigger: ".footer-bottom",
+        start: "top 95%",
+        once: true
+      }
+
     }
-
-    gsap.registerPlugin(ScrollTrigger);
-
-
-    /* Prevent duplicate initialization */
-
-    if (footer.dataset.animationInit === "true") {
-        return;
-    }
-
-    footer.dataset.animationInit = "true";
+  );
 
 
-    /* -----------------------------------------
-       MAIN COLUMNS
-    ----------------------------------------- */
+  /* -----------------------------------------
+     BACKGROUND PARALLAX
+  ----------------------------------------- */
 
-    const revealItems =
-        footer.querySelectorAll(".footer-reveal");
-
-
-    if (revealItems.length) {
-
-        gsap.from(revealItems, {
-
-            y: 60,
-
-            opacity: 0,
-
-            duration: 1,
-
-            stagger: 0.16,
-
-            ease: "power3.out",
-
-            scrollTrigger: {
-                trigger: footer,
-                start: "top 80%",
-                once: true
-            }
-
-        });
-
-    }
+  const footerBackground =
+    footer.querySelector(".pacer-footer__bg img");
 
 
-    /* -----------------------------------------
-       SOCIAL ICONS
-    ----------------------------------------- */
+  if (footerBackground) {
 
-    const socialIcons =
-        footer.querySelectorAll(".footer-social a");
+    gsap.to(
+      footerBackground,
+      {
 
+        yPercent: 0,
 
-    if (socialIcons.length) {
+        ease: "none",
 
-        gsap.from(socialIcons, {
-
-            scale: 0,
-
-            opacity: 0,
-
-            stagger: 0.1,
-
-            duration: 0.6,
-
-            ease: "back.out(1.8)",
-
-            scrollTrigger: {
-                trigger: ".footer-social",
-                start: "top 90%",
-                once: true
-            }
-
-        });
-
-    }
-
-
-    /* -----------------------------------------
-       CONTACT BUTTON
-    ----------------------------------------- */
-
-    const contactButton =
-        footer.querySelector(".footer-contact-btn");
-
-
-    if (contactButton) {
-
-        gsap.from(contactButton, {
-
-            y: 25,
-
-            opacity: 0,
-
-            duration: 0.8,
-
-            ease: "power3.out",
-
-            scrollTrigger: {
-                trigger: contactButton,
-                start: "top 95%",
-                once: true
-            }
-
-        });
-
-    }
-
-
-    /* -----------------------------------------
-       BOTTOM SECTION
-    ----------------------------------------- */
-
-    gsap.from(
-        ".footer-bottom__container",
-        {
-
-            y: 35,
-
-            opacity: 0,
-
-            duration: 0.8,
-
-            ease: "power3.out",
-
-            scrollTrigger: {
-                trigger: ".footer-bottom",
-                start: "top 95%",
-                once: true
-            }
-
+        scrollTrigger: {
+          trigger: footer,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1
         }
+
+      }
     );
 
-
-    /* -----------------------------------------
-       BACKGROUND PARALLAX
-    ----------------------------------------- */
-
-    const footerBackground =
-        footer.querySelector(".pacer-footer__bg img");
-
-
-    if (footerBackground) {
-
-        gsap.to(
-            footerBackground,
-            {
-
-                yPercent: 0,
-
-                ease: "none",
-
-                scrollTrigger: {
-                    trigger: footer,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1
-                }
-
-            }
-        );
-
-    }
+  }
 
 }
 
@@ -1623,12 +1640,12 @@ function initFooterAnimations() {
 ========================================= */
 
 document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+  "DOMContentLoaded",
+  () => {
 
-        initFooterAnimations();
+    initFooterAnimations();
 
-    }
+  }
 );
 
 
@@ -1638,34 +1655,34 @@ document.addEventListener(
 
 $(document).ready(function () {
 
-    // Open / toggle menu
-    $(".mobile-menu-btn").click(function () {
+  // Open / toggle menu
+  $(".mobile-menu-btn").click(function () {
 
-        $(".mobile-nav").addClass("active");
+    $(".mobile-nav").addClass("active");
 
-        $(this).addClass("active");
+    $(this).addClass("active");
 
-    });
-
-
-    // Close button
-    $(".mobile-close-btn").click(function () {
-
-        $(".mobile-nav").removeClass("active");
-
-        $(".mobile-menu-btn").removeClass("active");
-
-    });
+  });
 
 
-    // Close when clicking menu links
-    $(".mobile-nav a").click(function () {
+  // Close button
+  $(".mobile-close-btn").click(function () {
 
-        $(".mobile-nav").removeClass("active");
+    $(".mobile-nav").removeClass("active");
 
-        $(".mobile-menu-btn").removeClass("active");
+    $(".mobile-menu-btn").removeClass("active");
 
-    });
+  });
+
+
+  // Close when clicking menu links
+  $(".mobile-nav a").click(function () {
+
+    $(".mobile-nav").removeClass("active");
+
+    $(".mobile-menu-btn").removeClass("active");
+
+  });
 
 });
 
@@ -1676,134 +1693,134 @@ $(document).ready(function () {
 ========================================= */
 
 const companyProfile =
-    document.querySelector(".company-profile");
+  document.querySelector(".company-profile");
 
 
 if (
-    companyProfile &&
-    typeof gsap !== "undefined"
+  companyProfile &&
+  typeof gsap !== "undefined"
 ) {
 
-    const profileTimeline =
-        gsap.timeline({
+  const profileTimeline =
+    gsap.timeline({
 
-            scrollTrigger: {
-                trigger: ".company-profile",
-                start: "top 75%",
-                once: true
-            }
+      scrollTrigger: {
+        trigger: ".company-profile",
+        start: "top 75%",
+        once: true
+      }
 
-        });
-
-
-    /* Label */
-
-    profileTimeline.from(
-        ".profile-label",
-        {
-
-            y: 30,
-
-            opacity: 0,
-
-            duration: 0.7,
-
-            ease: "power3.out"
-
-        }
-    );
+    });
 
 
-    /* Title */
+  /* Label */
 
-    profileTimeline.from(
-        ".profile-title",
-        {
+  profileTimeline.from(
+    ".profile-label",
+    {
 
-            y: 60,
+      y: 30,
 
-            opacity: 0,
+      opacity: 0,
 
-            duration: 0.9,
+      duration: 0.7,
 
-            ease: "power4.out"
+      ease: "power3.out"
 
-        },
-        "-=0.3"
-    );
-
-
-    /* Line */
-
-    profileTimeline.from(
-        ".profile-line",
-        {
-
-            scaleX: 0,
-
-            transformOrigin: "left center",
-
-            duration: 0.7,
-
-            ease: "power3.out"
-
-        },
-        "-=0.5"
-    );
+    }
+  );
 
 
-    /* Description */
+  /* Title */
 
-    profileTimeline.from(
-        ".profile-description",
-        {
+  profileTimeline.from(
+    ".profile-title",
+    {
 
-            y: 35,
+      y: 60,
 
-            opacity: 0,
+      opacity: 0,
 
-            duration: 0.8,
+      duration: 0.9,
 
-            ease: "power3.out"
+      ease: "power4.out"
 
-        },
-        "-=0.3"
-    );
-
-
-    /* Image */
-
-    profileTimeline.from(
-        ".company-profile__visual",
-        {
-
-            x: 80,
-
-            opacity: 0,
-
-            duration: 1.1,
-
-            ease: "power4.out"
-
-        },
-        "-=0.8"
-    );
+    },
+    "-=0.3"
+  );
 
 
-    /* Image zoom reveal */
+  /* Line */
 
-    profileTimeline.from(
-        ".company-profile__visual img",
-        {
+  profileTimeline.from(
+    ".profile-line",
+    {
 
-            scale: 1.2,
+      scaleX: 0,
 
-            duration: 1.3,
+      transformOrigin: "left center",
 
-            ease: "power3.out"
+      duration: 0.7,
 
-        },
-        "-=1.1"
-    );
+      ease: "power3.out"
+
+    },
+    "-=0.5"
+  );
+
+
+  /* Description */
+
+  profileTimeline.from(
+    ".profile-description",
+    {
+
+      y: 35,
+
+      opacity: 0,
+
+      duration: 0.8,
+
+      ease: "power3.out"
+
+    },
+    "-=0.3"
+  );
+
+
+  /* Image */
+
+  profileTimeline.from(
+    ".company-profile__visual",
+    {
+
+      x: 80,
+
+      opacity: 0,
+
+      duration: 1.1,
+
+      ease: "power4.out"
+
+    },
+    "-=0.8"
+  );
+
+
+  /* Image zoom reveal */
+
+  profileTimeline.from(
+    ".company-profile__visual img",
+    {
+
+      scale: 1.2,
+
+      duration: 1.3,
+
+      ease: "power3.out"
+
+    },
+    "-=1.1"
+  );
 
 }

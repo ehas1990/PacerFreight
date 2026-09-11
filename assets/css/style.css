@@ -64,6 +64,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .loader-logo {
@@ -240,6 +241,9 @@ img {
     left: 0;
     top: 0;
     z-index: 999;
+
+    background: #fdc30a;
+
 }
 
 .header-container {
@@ -322,10 +326,11 @@ img {
 .desktop-nav a {
     font-family: var(--mono);
     font-size: .69rem;
-    letter-spacing: .08em;
-    color: rgba(255, 255, 255, .68);
+    letter-spacing: .10rem;
+    color: #18222c;
     position: relative;
     transition: .3s ease;
+    font-weight: 500;
 }
 
 .desktop-nav a::after {
@@ -342,6 +347,7 @@ img {
 .desktop-nav a:hover,
 .desktop-nav a.active {
     color: #fff;
+    font-weight: 500;
 }
 
 .desktop-nav a:hover::after,
@@ -367,6 +373,7 @@ img {
             8% 100%,
             0 78%);
     transition: .4s ease;
+    color: #18222c;
 }
 
 .quote-btn:hover {
@@ -688,7 +695,7 @@ img {
     position: absolute;
     left: 24px;
     top: 190px;
-    height: 280px;
+    /* height: 280px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1172,8 +1179,7 @@ img {
     margin-bottom: 25px;
     border: 1px solid rgba(35, 45, 55, 0.07);
     border-radius: 22px;
-    background:
-        rgba(255, 255, 255, 0.55);
+    background: #ffc107;
     box-shadow:
         0 18px 50px rgba(30, 40, 50, 0.04);
 }
@@ -2868,7 +2874,9 @@ img {
 .pacer-footer {
     position: relative;
     overflow: hidden;
-    background: #020a14;
+    background: linear-gradient(145deg,
+            #ffffff,
+            #f0f1f1);
     color: #ffffff;
 }
 
@@ -3060,7 +3068,7 @@ img {
 
     line-height: 1.8;
 
-    color: rgba(255, 255, 255, 0.72);
+    color: #687078;
 }
 
 
@@ -3135,7 +3143,7 @@ img {
 
     font-weight: 700;
 
-    color: #ffffff;
+    color: #687078;
 }
 
 
@@ -3187,7 +3195,7 @@ img {
 
     display: inline-block;
 
-    color: rgba(255, 255, 255, 0.75);
+    color: #687078;
 
     font-size: 16px;
 
@@ -3209,7 +3217,7 @@ img {
    CONTACT CARD
 ========================================= */
 
-.footer-contact {
+/* .footer-contact {
     position: relative;
 
     padding: 38px 28px 34px;
@@ -3224,15 +3232,19 @@ img {
             rgba(3, 11, 21, 0.75));
 
     backdrop-filter: blur(12px);
-}
+} */
 
 
 .contact-item {
     display: flex;
 
-    align-items: center;
+    align-items: start;
 
     gap: 20px;
+}
+
+.contact-item+.contact-item {
+    margin-top: 17px;
 }
 
 
@@ -3275,11 +3287,11 @@ img {
 
     text-transform: uppercase;
 
-    color: rgba(255, 255, 255, 0.6);
+    color: #687078;
 }
 
 .contact-info a {
-    color: #ffffff;
+    color: #687078;
 
     font-size: 16px;
 
@@ -3416,7 +3428,7 @@ img {
 
     font-size: 14px;
 
-    color: rgba(255, 255, 255, 0.65);
+    color: #687078;
 }
 
 .footer-copyright strong {
@@ -3442,8 +3454,7 @@ img {
     font-size: 12px;
 
     letter-spacing: 3px;
-
-    color: rgba(255, 255, 255, 0.7);
+    color: #687078;
 }
 
 .footer-bottom-right b {
@@ -3897,28 +3908,13 @@ body.menu-open {
     width: 100%;
     overflow: hidden;
     padding: 110px 0 30px;
-    background-image: linear-gradient(360deg, rgba(5, 9, 12, 0.85) 30%, rgb(0 0 0 / 5%) 100%), url(../images/dsada.jpg);
+    background-image: linear-gradient(360deg, rgb(33 33 33 / 80%) 35%, rgb(0 0 0 / 5%) 100%), url(../images/profile-background.webp);
     background-position: center 20%;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-/* .company-profile-section {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 110px 0 30px;
-    background:
-        radial-gradient(circle at 15% 20%,
-            rgba(246, 192, 25, 0.08),
-            transparent 28%),
-        linear-gradient(135deg,
-            #ffffff 0%,
-            #f7f8f8 100%);
-    background-image: url('../images/services.jpg');
-    background-position: center;
-    background-size: cover;
-} */
+
 
 
 /* =========================================
@@ -3956,7 +3952,7 @@ body.menu-open {
     align-items: center;
     gap: 8px;
     margin-bottom: 39px;
-    color: #b92725;
+    color: #FFC107;
     font-size: 13px;
     font-weight: 700;
     justify-content: center;
@@ -4073,8 +4069,8 @@ body.menu-open {
 }
 
 .cp-description strong {
-    color: var(--red);
-    font-weight: 800;
+    color: var(--yellow);
+    font-weight: bold;
 }
 
 
