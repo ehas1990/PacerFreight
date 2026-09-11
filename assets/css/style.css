@@ -2805,9 +2805,14 @@ img {
         width: 48px;
     }
 
+    .yellow-shape {
+        left: -61px;
+        height: 400px;
+    }
 
     .red-shape {
-        left: 55px;
+        left: 20px;
+        height: 350px;
     }
 
 
@@ -3551,9 +3556,9 @@ img {
         line-height: 1.75;
     }
 
-    .footer-contact {
+    /* .footer-contact {
         padding: 30px 22px;
-    }
+    } */
 
     .contact-icon {
         flex: 0 0 55px;
