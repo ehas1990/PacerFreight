@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================= */
 
   const menuBtn = document.querySelector(".mobile-menu-btn");
+  const mobileCloseBtn = document.querySelector(".mobile-close-btn");
   const mobileNav = document.querySelector(".mobile-nav");
   const mobileLinks = document.querySelectorAll(".mobile-nav a");
 
@@ -38,6 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileNav.classList.toggle("active");
       document.body.classList.toggle("menu-open");
     });
+
+    if (mobileCloseBtn) {
+      mobileCloseBtn.addEventListener("click", () => {
+        menuBtn.classList.remove("active");
+        mobileNav.classList.remove("active");
+        document.body.classList.remove("menu-open");
+      });
+    }
 
     mobileLinks.forEach((link) => {
 
@@ -1652,6 +1661,8 @@ $(document).ready(function () {
 
     $(this).addClass("active");
 
+    $("body").addClass("menu-open");
+
   });
 
 
@@ -1662,6 +1673,8 @@ $(document).ready(function () {
 
     $(".mobile-menu-btn").removeClass("active");
 
+    $("body").removeClass("menu-open");
+
   });
 
 
@@ -1671,6 +1684,8 @@ $(document).ready(function () {
     $(".mobile-nav").removeClass("active");
 
     $(".mobile-menu-btn").removeClass("active");
+
+    $("body").removeClass("menu-open");
 
   });
 

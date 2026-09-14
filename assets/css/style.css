@@ -330,7 +330,7 @@ img {
     color: #18222c;
     position: relative;
     transition: .3s ease;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .desktop-nav a::after {
@@ -347,7 +347,7 @@ img {
 .desktop-nav a:hover,
 .desktop-nav a.active {
     color: #fff;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .desktop-nav a:hover::after,
@@ -373,7 +373,9 @@ img {
             8% 100%,
             0 78%);
     transition: .4s ease;
-    color: #18222c;
+    color: #ffffff;
+    background: var(--red);
+    font-weight: 600;
 }
 
 .quote-btn:hover {
@@ -402,7 +404,7 @@ img {
     min-height: calc(100svh - 110px);
     display: flex;
     align-items: center;
-    padding: 170px 0 180px;
+    padding: 170px 0 200px;
     position: relative;
 }
 
@@ -469,6 +471,7 @@ img {
     color: rgba(255, 255, 255, .65);
     line-height: 1.9;
     font-size: .92rem;
+    margin-left: 10px;
 }
 
 .hero-actions {
@@ -1848,7 +1851,7 @@ img {
 
     .hero-content {
         min-height: calc(100svh - 85px);
-        padding: 120px 0 210px;
+        padding: 150px 0 210px;
     }
 
     .hero-copy {
@@ -1856,8 +1859,8 @@ img {
     }
 
     .hero-title {
-        font-size: clamp(4.3rem, 19vw, 6rem);
-        line-height: .8;
+        font-size: 52px;
+        line-height: 3.10rem;
     }
 
     .hero-description {
@@ -3460,7 +3463,7 @@ img {
 .footer-copyright p {
     margin: 0;
     font-size: 14px;
-    color: #687078;
+    color: #ffffff;
     display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -3506,7 +3509,7 @@ a.dev-log img {
     font-size: 12px;
 
     letter-spacing: 3px;
-    color: #687078;
+    color: #ffffff;
 }
 
 .footer-bottom-right b {
@@ -4454,6 +4457,11 @@ body.menu-open {
 ========================================= */
 
 @media (max-width: 768px) {
+    .hero-copy {
+        width: 70%;
+        padding-left: 0px;
+    }
+
     .about-bottom-grid {
         grid-template-columns: 1fr;
     }
@@ -4606,6 +4614,16 @@ body.menu-open {
 ========================================= */
 
 @media (max-width: 480px) {
+    .me-1 {
+        margin-left: 0rem !important;
+
+    }
+
+    .hero-copy {
+        width: 70%;
+        padding-left: 0px;
+    }
+
     .pacer-footer__top {
         grid-template-columns: 1fr;
         gap: 35px;
@@ -4683,6 +4701,23 @@ body.menu-open {
 
 }
 
-section#home {
-    margin-top: 20px;
+.bg-3 {
+
+    background-size: cover !important;
+    background-position: center 30px !important;
+}
+
+.bg-2 {
+
+    background-size: cover !important;
+    background-position: center 30px !important;
+}
+
+.me-1 {
+    margin-left: .55rem;
+}
+
+.services-grid {
+
+    margin-top: 40px;
 }
