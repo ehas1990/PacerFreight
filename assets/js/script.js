@@ -188,39 +188,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (loader) {
 
-    // Start logo from left
-    gsap.set(".loader-logo", { x: -40, y: 0 });
+    // Keep logo centered and start at 80% scale
+    gsap.set(".loader-logo", { scale: 0.8, x: 0, y: 0, transformOrigin: "center center" });
 
-    // Gentle natural wave floating motion (up/down and subtle micro-tilt)
-    const floatAnim = gsap.to(".loader-logo", {
-      y: -12,
-      rotation: 1.5,
-      duration: 1.1,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
-
-    // Smooth horizontal travel from LEFT to RIGHT (3.2 seconds)
     intro
+      // Smooth logo zoom from 80% to 100%
       .to(".loader-logo", {
-        x: 40,
-        duration: 3.2,
-        ease: "sine.inOut"
+        scale: 1,
+        duration: 1.8,
+        ease: "power2.inOut"
       })
 
       // Smooth fade out of entire loader background
       .to(loader, {
         opacity: 0,
-        duration: 0.9,
+        duration: 0.8,
         ease: "power2.inOut",
         onComplete: () => {
-          floatAnim.kill();
           loader.style.display = "none";
         }
       });
 
   }
+
 
 
   intro

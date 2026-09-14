@@ -402,13 +402,13 @@ img {
     min-height: calc(100svh - 110px);
     display: flex;
     align-items: center;
-    padding: 187px 0 180px;
+    padding: 170px 0 180px;
     position: relative;
 }
 
 .hero-copy {
-    width: min(680px, 55%);
-    padding-top: 30px;
+    width: min(880px, 100%);
+
 }
 
 .hero-eyebrow {
@@ -419,7 +419,7 @@ img {
     color: #ff5b54;
     font-size: .78rem;
     letter-spacing: .12em;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .hero-eyebrow span {
@@ -431,12 +431,11 @@ img {
 .hero-title {
     font-family: var(--display);
     font-weight: 600;
-    font-size: clamp(4rem, 8vw, 9rem);
-    line-height: .76;
+    font-size: 56px;
+    line-height: 50px;
     letter-spacing: .04em;
     text-transform: uppercase;
     display: flex;
-    flex-direction: column;
 }
 
 .title-line {
@@ -452,9 +451,9 @@ img {
 }
 
 .hero-description {
-    margin-top: 46px;
+    margin-top: 20px;
     display: flex;
-    gap: 22px;
+    /* gap: 22px; */
     max-width: 500px;
 }
 
@@ -473,7 +472,7 @@ img {
 }
 
 .hero-actions {
-    margin-top: 38px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     gap: 28px;
@@ -562,7 +561,7 @@ img {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
     align-items: center;
-    padding: 25px 30px;
+    padding: 15px 30px;
     /* clip-path: polygon(
     0 0,
     100% 0,
@@ -1997,7 +1996,8 @@ img {
     }
 
     .hero-title {
-        font-size: 3.49rem;
+        font-size: clamp(3.3rem, 1vw, 6rem) !important;
+        display: flow !important;
     }
 
     .hero-description {
@@ -3079,7 +3079,7 @@ img {
 
     line-height: 1.8;
 
-    color: #687078;
+    color: #ffffff;
 }
 
 
@@ -3154,7 +3154,7 @@ img {
 
     font-weight: 700;
 
-    color: #687078;
+    color: #ffffff;
 }
 
 
@@ -3206,7 +3206,7 @@ img {
 
     display: inline-block;
 
-    color: #687078;
+    color: #ffffff;
 
     font-size: 16px;
 
@@ -3322,11 +3322,11 @@ img {
 
     text-transform: uppercase;
 
-    color: #687078;
+    color: #ffffff;
 }
 
 .contact-info a {
-    color: #687078;
+    color: #ffffff;
 
     font-size: 16px;
 
@@ -4681,4 +4681,8 @@ body.menu-open {
         display: none;
     }
 
+}
+
+section#home {
+    margin-top: 20px;
 }
