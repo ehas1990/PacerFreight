@@ -192,87 +192,98 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const loader = document.querySelector(".site-loader");
 
-  const intro = gsap.timeline();
+  function startHeroIntro() {
+    const intro = gsap.timeline();
+
+    intro
+      .from(".header", {
+        y: -30,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=.3")
+
+      .from(".hero-eyebrow", {
+        x: -40,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out"
+      }, "-=.3")
+
+      .from(".hero-title .title-line", {
+        yPercent: 120,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 1,
+        ease: "power4.out"
+      }, "-=.2")
+
+      .from(".hero-description", {
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out"
+      }, "-=.5")
+
+      .from(".hero-actions", {
+        y: 25,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out"
+      }, "-=.4")
+
+      .from(".hero-stats", {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=.4")
+
+      .from(".route-line", {
+        x: 80,
+        opacity: 0,
+        duration: 1,
+        ease: "power4.out"
+      }, "-=.7");
+  }
 
 
   if (loader) {
 
-    // Keep logo centered and start at 80% scale
-    gsap.set(".loader-logo", { scale: 0.8, x: 0, y: 0, transformOrigin: "center center" });
+    // Disable scrolling while loader is active
+    document.body.style.overflow = "hidden";
 
-    intro
-      // Smooth logo zoom from 80% to 100%
-      .to(".loader-logo", {
-        scale: 1,
-        duration: 0.56,
-        ease: "power2.inOut"
-      })
+    // Keep logo centered and set initial scale
+    gsap.set(".loader-logo", { scale: 0.85, x: 0, y: 0, transformOrigin: "center center" });
 
-      // Smooth fade out of entire loader background
-      .to(loader, {
+    // Smooth continuous zoom-in and zoom-out effect
+    const logoPulse = gsap.to(".loader-logo", {
+      scale: 1.15,
+      duration: 1.6,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    // 10,000ms (10 seconds) timeout before smoothly revealing Home page
+    setTimeout(() => {
+      gsap.to(loader, {
         opacity: 0,
-        duration: 0.56,
+        duration: 0.8,
         ease: "power2.inOut",
         onComplete: () => {
+          logoPulse.kill();
           loader.style.display = "none";
+          loader.style.pointerEvents = "none";
+          document.body.style.overflow = "";
+          startHeroIntro();
         }
       });
+    }, 10000);
 
+  } else {
+    startHeroIntro();
   }
-
-
-
-  intro
-
-    .from(".header", {
-      y: -30,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    }, "-=.3")
-
-    .from(".hero-eyebrow", {
-      x: -40,
-      opacity: 0,
-      duration: 0.7,
-      ease: "power3.out"
-    }, "-=.3")
-
-    .from(".hero-title .title-line", {
-      yPercent: 120,
-      opacity: 0,
-      stagger: 0.12,
-      duration: 1,
-      ease: "power4.out"
-    }, "-=.2")
-
-    .from(".hero-description", {
-      y: 30,
-      opacity: 0,
-      duration: 0.7,
-      ease: "power3.out"
-    }, "-=.5")
-
-    .from(".hero-actions", {
-      y: 25,
-      opacity: 0,
-      duration: 0.7,
-      ease: "power3.out"
-    }, "-=.4")
-
-    .from(".hero-stats", {
-      y: 60,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    }, "-=.4")
-
-    .from(".route-line", {
-      x: 80,
-      opacity: 0,
-      duration: 1,
-      ease: "power4.out"
-    }, "-=.7");
 
 
   /* =========================================
