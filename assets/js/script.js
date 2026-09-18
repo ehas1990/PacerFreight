@@ -204,14 +204,14 @@ document.addEventListener("DOMContentLoaded", () => {
       // Smooth logo zoom from 80% to 100%
       .to(".loader-logo", {
         scale: 1,
-        duration: 1.1,
+        duration: 0.56,
         ease: "power2.inOut"
       })
 
       // Smooth fade out of entire loader background
       .to(loader, {
         opacity: 0,
-        duration: 0.6,
+        duration: 0.56,
         ease: "power2.inOut",
         onComplete: () => {
           loader.style.display = "none";
