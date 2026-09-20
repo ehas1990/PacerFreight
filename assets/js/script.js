@@ -254,36 +254,40 @@ document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
 
-    // Keep logo centered and set initial scale
-    gsap.set(".loader-logo", { scale: 0.85, x: 0, y: 0, transformOrigin: "center center" });
-
-    // Smooth continuous zoom-in and zoom-out effect
-    const logoPulse = gsap.to(".loader-logo", {
-      scale: 1.15,
-      duration: 1.6,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
+    // Set initial logo state
+    gsap.set(".loader-logo", {
+      scale: 0.82,
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transformOrigin: "center center"
     });
 
-    // 4000ms timeout before smoothly revealing Home page
-    setTimeout(() => {
-      startHeroIntro();
+    // Single smooth slow zoom-in animation
+    const loaderTl = gsap.timeline({
+      onComplete: () => {
+        loader.style.display = "none";
+        loader.style.pointerEvents = "none";
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+        ScrollTrigger.refresh();
+      }
+    });
 
-      gsap.to(loader, {
+    loaderTl
+      .to(".loader-logo", {
+        scale: 1,
+        duration: 2.2,
+        ease: "power2.out"
+      })
+      .add(() => {
+        startHeroIntro();
+      }, "+=0.15")
+      .to(loader, {
         opacity: 0,
         duration: 0.8,
-        ease: "power2.inOut",
-        onComplete: () => {
-          logoPulse.kill();
-          loader.style.display = "none";
-          loader.style.pointerEvents = "none";
-          document.documentElement.style.overflow = "";
-          document.body.style.overflow = "";
-          ScrollTrigger.refresh();
-        }
-      });
-    }, 4000);
+        ease: "power2.inOut"
+      }, "<");
 
   } else {
     startHeroIntro();
