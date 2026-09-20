@@ -250,7 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (loader) {
 
-    // Disable scrolling while loader is active
+    // Disable scrolling and prevent side scrollbar gutter during loader
+    document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
 
     // Keep logo centered and set initial scale
@@ -277,6 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
           logoPulse.kill();
           loader.style.display = "none";
           loader.style.pointerEvents = "none";
+          document.documentElement.style.overflow = "";
           document.body.style.overflow = "";
           ScrollTrigger.refresh();
         }

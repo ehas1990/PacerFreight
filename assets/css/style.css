@@ -20,7 +20,6 @@
 
 html {
     scroll-behavior: smooth;
-    scrollbar-gutter: stable;
 }
 
 body {
@@ -59,9 +58,13 @@ img {
 
 .site-loader {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100dvh;
     background: var(--yellow);
-    z-index: 9999;
+    z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
