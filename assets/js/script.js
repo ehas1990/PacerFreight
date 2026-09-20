@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 0,
         duration: 0.8,
         ease: "power3.out"
-      }, "-=.3")
+      })
 
       .from(".hero-eyebrow", {
         x: -40,
@@ -265,8 +265,10 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "sine.inOut"
     });
 
-    // 10,000ms (10 seconds) timeout before smoothly revealing Home page
+    // 4000ms timeout before smoothly revealing Home page
     setTimeout(() => {
+      startHeroIntro();
+
       gsap.to(loader, {
         opacity: 0,
         duration: 0.8,
@@ -276,10 +278,10 @@ document.addEventListener("DOMContentLoaded", () => {
           loader.style.display = "none";
           loader.style.pointerEvents = "none";
           document.body.style.overflow = "";
-          startHeroIntro();
+          ScrollTrigger.refresh();
         }
       });
-    }, 10000);
+    }, 4000);
 
   } else {
     startHeroIntro();

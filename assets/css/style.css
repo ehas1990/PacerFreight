@@ -20,6 +20,7 @@
 
 html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
 }
 
 body {
@@ -65,6 +66,7 @@ img {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    will-change: opacity;
 }
 
 .loader-logo {
@@ -1269,7 +1271,7 @@ img {
     font-size: 15px;
     line-height: 1.6;
     padding-left: 21px;
-    font-style: italic;
+
 }
 
 .mission-dots {
