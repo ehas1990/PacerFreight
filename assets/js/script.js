@@ -141,8 +141,9 @@ document.addEventListener("DOMContentLoaded", () => {
       onComplete: playBackgroundTransition
     });
 
+    // Stay visible longer on each slide (e.g., 6.5s)
     bgTimeline.to({}, {
-      duration: 4
+      duration: 6.5
     });
 
     bgTimeline.set(nextScene, {
@@ -151,13 +152,14 @@ document.addEventListener("DOMContentLoaded", () => {
       filter: "blur(10px)"
     });
 
+    // Slower and smoother cross-fade & zoom transition (3s)
     bgTimeline.to(
       currentScene,
       {
         opacity: 0,
         scale: 1.08,
         filter: "blur(8px)",
-        duration: 2,
+        duration: 3,
         ease: "power2.inOut"
       }
     );
@@ -168,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 1,
         scale: 1,
         filter: "blur(0px)",
-        duration: 2,
+        duration: 3,
         ease: "power2.inOut"
       },
       "<"
