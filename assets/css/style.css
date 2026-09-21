@@ -4823,3 +4823,24 @@ body.menu-open {
 
     margin-top: 40px;
 }
+
+::-moz-selection {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+::selection {
+    background-color: var(--red);
+    color: var(--white);
+
+}
+
+::selection {
+    background-color: #ce444f;
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background-color: #ce444f;
+    color: #ffffff;
+}

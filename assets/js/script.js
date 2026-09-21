@@ -107,87 +107,80 @@ document.addEventListener("DOMContentLoaded", () => {
     .map((selector) => document.querySelector(selector))
     .filter(Boolean);
 
+  let bgTimeline = null;
+  let activeScene = 0;
 
-  if (sceneElements.length > 1) {
-
-    let activeScene = 0;
-
-    gsap.set(sceneElements, {
-      opacity: 0,
-      scale: 1.12,
-      filter: "blur(5px)"
-    });
-
-    gsap.set(sceneElements[0], {
-      opacity: 1,
-      scale: 1,
-      filter: "blur(0px)"
-    });
-
-
-    function playBackgroundTransition() {
-
-      const currentScene =
-        sceneElements[activeScene];
-
-      activeScene =
-        (activeScene + 1) % sceneElements.length;
-
-      const nextScene =
-        sceneElements[activeScene];
-
-
-      const bgTimeline = gsap.timeline({
-        onComplete: playBackgroundTransition
-      });
-
-
-      bgTimeline.to({}, {
-        duration: 4
-      });
-
-
-      bgTimeline.set(nextScene, {
-        opacity: 0,
-        scale: 1.18,
-        filter: "blur(10px)"
-      });
-
-
-      bgTimeline.to(
-        currentScene,
-        {
-          opacity: 0,
-          scale: 1.08,
-          filter: "blur(8px)",
-          duration: 2,
-          ease: "power2.inOut"
-        }
-      );
-
-
-      bgTimeline.to(
-        nextScene,
-        {
-          opacity: 1,
-          scale: 1,
-          filter: "blur(0px)",
-          duration: 2,
-          ease: "power2.inOut"
-        },
-        "<"
-      );
-
+  function resetHeroSlider() {
+    if (bgTimeline) {
+      bgTimeline.kill();
+      bgTimeline = null;
     }
-
-
-    playBackgroundTransition();
-
+    activeScene = 0;
+    if (sceneElements.length > 0) {
+      gsap.set(sceneElements, {
+        opacity: 0,
+        scale: 1.12,
+        filter: "blur(5px)"
+      });
+      gsap.set(sceneElements[0], {
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)"
+      });
+    }
   }
+
+  function playBackgroundTransition() {
+    if (sceneElements.length <= 1) return;
+
+    const currentScene = sceneElements[activeScene];
+    activeScene = (activeScene + 1) % sceneElements.length;
+    const nextScene = sceneElements[activeScene];
+
+    bgTimeline = gsap.timeline({
+      onComplete: playBackgroundTransition
+    });
+
+    bgTimeline.to({}, {
+      duration: 4
+    });
+
+    bgTimeline.set(nextScene, {
+      opacity: 0,
+      scale: 1.18,
+      filter: "blur(10px)"
+    });
+
+    bgTimeline.to(
+      currentScene,
+      {
+        opacity: 0,
+        scale: 1.08,
+        filter: "blur(8px)",
+        duration: 2,
+        ease: "power2.inOut"
+      }
+    );
+
+    bgTimeline.to(
+      nextScene,
+      {
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 2,
+        ease: "power2.inOut"
+      },
+      "<"
+    );
+  }
+
+  // Initial reset of hero background slider to Slide 1
+  resetHeroSlider();
 
 
   /* =========================================
-     HERO INTRO ANIMATION
+     HERO INTRO ANIMATION & PRELOADER
   ========================================= */
 
   const loader = document.querySelector(".site-loader");
@@ -249,8 +242,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   if (loader) {
-
-    // Disable scrolling and prevent side scrollbar gutter during loader
+    // Disable scrolling and lock viewport to top during preloader
+    window.scrollTo(0, 0);
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
 
@@ -263,33 +256,65 @@ document.addEventListener("DOMContentLoaded", () => {
       transformOrigin: "center center"
     });
 
-    // Single smooth slow zoom-in animation
-    const loaderTl = gsap.timeline({
+    let isWindowLoaded = false;
+    let isLoaderAnimFinished = false;
+
+    function finishLoader() {
+      if (!isWindowLoaded || !isLoaderAnimFinished) return;
+
+      // Ensure viewport is at top when website is revealed
+      window.scrollTo(0, 0);
+
+      // Reset hero slider explicitly to Slide 1 and start slider transitions
+      resetHeroSlider();
+      playBackgroundTransition();
+
+      const revealTl = gsap.timeline({
+        onComplete: () => {
+          loader.style.display = "none";
+          loader.style.pointerEvents = "none";
+          document.documentElement.style.overflow = "";
+          document.body.style.overflow = "";
+          window.scrollTo(0, 0);
+          ScrollTrigger.refresh();
+        }
+      });
+
+      revealTl
+        .add(() => {
+          startHeroIntro();
+        }, "+=0.05")
+        .to(loader, {
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.inOut"
+        }, "<");
+    }
+
+    // Logo intro animation
+    gsap.to(".loader-logo", {
+      scale: 1,
+      duration: 2.2,
+      ease: "power2.out",
       onComplete: () => {
-        loader.style.display = "none";
-        loader.style.pointerEvents = "none";
-        document.documentElement.style.overflow = "";
-        document.body.style.overflow = "";
-        ScrollTrigger.refresh();
+        isLoaderAnimFinished = true;
+        finishLoader();
       }
     });
 
-    loaderTl
-      .to(".loader-logo", {
-        scale: 1,
-        duration: 2.2,
-        ease: "power2.out"
-      })
-      .add(() => {
-        startHeroIntro();
-      }, "+=0.15")
-      .to(loader, {
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.inOut"
-      }, "<");
-
+    // Complete background loading check
+    if (document.readyState === "complete") {
+      isWindowLoaded = true;
+    } else {
+      window.addEventListener("load", () => {
+        isWindowLoaded = true;
+        finishLoader();
+      });
+    }
   } else {
+    window.scrollTo(0, 0);
+    resetHeroSlider();
+    playBackgroundTransition();
     startHeroIntro();
   }
 
